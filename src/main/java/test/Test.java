@@ -7,14 +7,30 @@ import java.lang.reflect.Method;
 
 public abstract class Test {
     protected String testName;
+    private TestResult testResult;
     private static final Logger logger = LoggerFactory.getLogger(Test.class);
     public Test(String testName){
         this.testName=testName;
     }
-    public void run(){
+    public TestResult run(){
+        getResultInstance();
+        run(testResult);
+        return testResult;
+    }
+    public void run(TestResult testResult){
+        testResult.startTest();
         before();
         runTest();
         after();
+    }
+    private void getResultInstance(){
+        try {
+            if (testResult.equals(null)==true) {
+                 testResult = new TestResult();
+            }
+        }catch (NullPointerException e){
+            testResult = new TestResult();
+        }
     }
     protected void before(){}
     protected void after(){}
