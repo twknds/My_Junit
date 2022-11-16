@@ -12,6 +12,13 @@ public abstract class Test {
         this.testName=testName;
     }
     public void run(){
+        before();
+        runTest();
+        after();
+    }
+    protected void before(){}
+    protected void after(){}
+    private void runTest(){
         try{
             logger.info("{} execute ",testName);
             Method method = this.getClass().getMethod(testName,null);
