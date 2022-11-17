@@ -23,7 +23,7 @@ public class TestMain extends Test {
         Assert.assertTest(sum==20);
     }
     public void runTest_2() {
-        long minus = 100-1;
+        long minus = 100-10;
         Assert.assertTest(minus == 90);
     }
 }
