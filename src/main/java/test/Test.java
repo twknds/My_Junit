@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-public abstract class Test {
+public abstract class Test implements TestInterface{
     protected String testName;
     private TestResult testResult;
     private static final Logger logger = LoggerFactory.getLogger(Test.class);
@@ -19,6 +19,7 @@ public abstract class Test {
         run(testResult);
         return testResult;
     }
+    @Override
     public void run(TestResult testResult){
         testResult.startTest();
         before();
